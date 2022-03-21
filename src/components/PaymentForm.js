@@ -1,16 +1,15 @@
 import React, { useState } from "react";
-import Cards from 'react-credit-cards';
 import { useRecoilState } from "recoil";
 import { Input } from 'antd';
 import { UserOutlined, FieldNumberOutlined, CalendarOutlined, QrcodeOutlined } from '@ant-design/icons';
-import { number, name, expiry, cvc } from "../atoms/atoms";
+import { number, name, expiry, cvc, focus } from "../atoms/atoms";
 
 function PaymentForm() {
-  const [focus, setFocus] = useState("");
   const [numberState, setNumber] = useRecoilState(number);
   const [nameState, setName] = useRecoilState(name);
   const [expireyState, setExpirey] = useRecoilState(expiry);
-  const [cvcSate, setCvc] = useRecoilState(cvc);
+  const [cvcState, setCvc] = useRecoilState(cvc);
+  const [focusState, setFocus] = useRecoilState(focus);
 
   function handleInputFocus(e){
     setFocus(e.target.name );
@@ -32,15 +31,6 @@ function PaymentForm() {
 
   return (
     <div id="PaymentForm">
-      <Cards
-        preview={true}
-        issuer={"visa"}
-        cvc={cvcSate}
-        expiry={expireyState}
-        focused={focus}
-        name={nameState}
-        number={numberState}
-      />
       <form>
         <Input allowClear size="large" type="text" name="number" placeholder="Card Number" prefix={<FieldNumberOutlined />} onChange={handleInputChange} onFocus={handleInputFocus} style={{ width: '20%' }}/>
         <br />

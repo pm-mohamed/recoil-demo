@@ -18,3 +18,7 @@ export const cvc = atom({
   key: "cvc",
   default: "",
 });
+export const focus = atom({
+    key: "focus",
+    default: "",
+  });
