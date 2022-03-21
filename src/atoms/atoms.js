@@ -1,7 +1,20 @@
 import { atom } from "recoil";
 
-// creating the state value
-export const count = atom({
-  key: "count",
-  default: 0
+export const number = atom({
+  key: "number",
+  default: "",
+});
+
+export const name = atom({
+  key: "name",
+  default: "",
+});
+
+export const expiry = atom({
+  key: "expiry",
+  default: "",
+});
+export const cvc = atom({
+  key: "cvc",
+  default: "",
 });

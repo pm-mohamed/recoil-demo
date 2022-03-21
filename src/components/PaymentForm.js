@@ -1,68 +1,76 @@
-import React from 'react';
+import React, { useState } from "react";
 import Cards from 'react-credit-cards';
- 
-export default class PaymentForm extends React.Component {
-  state = {
-    cvc: '',
-    expiry: '',
-    focus: '',
-    name: '',
-    number: '',
+import { useRecoilState } from "recoil";
+import { number, name, expiry, cvc } from "../atoms/atoms";
+
+function PaymentForm() {
+  const [focus, setFocus] = useState("");
+  const [numberState, setNumber] = useRecoilState(number);
+  const [nameState, setName] = useRecoilState(name);
+  const [expireyState, setExpirey] = useRecoilState(expiry);
+  const [cvcSate, setCvc] = useRecoilState(cvc);
+
+  function handleInputFocus(e){
+    setFocus(e.target.name );
   };
- 
-  handleInputFocus = (e) => {
-    this.setState({ focus: e.target.name });
-  }
-  
-  handleInputChange = (e) => {
+
+  function handleInputChange(e){
     const { name, value } = e.target;
     
-    this.setState({ [name]: value });
+    if(name === "number"){
+      setNumber(value)
+    } else if(name === "name"){
+      setName(value)
+    } else if(name === "expiry"){
+      setExpirey(value)
+    } else if(name === "cvc"){
+      setCvc(value)
+    }
   }
-  
-  render() {
-    return (
-      <div id="PaymentForm">
-        <Cards
-          preview={true}
-          issuer={"visa"}
-          cvc={this.state.cvc}
-          expiry={this.state.expiry}
-          focused={this.state.focus}
-          name={this.state.name}
-          number={this.state.number}
+
+  return (
+    <div id="PaymentForm">
+      <Cards
+        preview={true}
+        issuer={"visa"}
+        cvc={cvcSate}
+        expiry={expireyState}
+        focused={focus}
+        name={nameState}
+        number={numberState}
+      />
+      <form>
+        <input
+          type="tel"
+          name="number"
+          placeholder="Card Number"
+          onChange={handleInputChange}
+          onFocus={handleInputFocus}
         />
-        <form>
-        	<input
-            type="tel"
-            name="number"
-            placeholder="Card Number"
-            onChange={this.handleInputChange}
-            onFocus={this.handleInputFocus}
-            />
-            <input
-            type="name"
-            name="name"
-            placeholder="name"
-            onChange={this.handleInputChange}
-            onFocus={this.handleInputFocus}
-          />
         <input
-            type="expiry"
-            name="expiry"
-            placeholder="expiry"
-            onChange={this.handleInputChange}
-            onFocus={this.handleInputFocus}
-          />
+          type="name"
+          name="name"
+          placeholder="name"
+          onChange={handleInputChange}
+          onFocus={handleInputFocus}
+        />
         <input
-            type="cvc"
-            name="cvc"
-            placeholder="cvc"
-            onChange={this.handleInputChange}
-            onFocus={this.handleInputFocus}
-          />
-        </form>
-      </div>
-    );
-  }
+          type="expiry"
+          name="expiry"
+          placeholder="expiry"
+          onChange={handleInputChange}
+          onFocus={handleInputFocus}
+        />
+        <input
+          type="cvc"
+          name="cvc"
+          placeholder="cvc"
+          onChange={handleInputChange}
+          onFocus={handleInputFocus}
+        />
+      </form>
+    </div>
+  );
 }
+
+export default PaymentForm;
