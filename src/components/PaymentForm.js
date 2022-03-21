@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Cards from 'react-credit-cards';
 import { useRecoilState } from "recoil";
+import { Input } from 'antd';
+import { UserOutlined, FieldNumberOutlined, CalendarOutlined, QrcodeOutlined } from '@ant-design/icons';
 import { number, name, expiry, cvc } from "../atoms/atoms";
 
 function PaymentForm() {
@@ -40,34 +42,13 @@ function PaymentForm() {
         number={numberState}
       />
       <form>
-        <input
-          type="tel"
-          name="number"
-          placeholder="Card Number"
-          onChange={handleInputChange}
-          onFocus={handleInputFocus}
-        />
-        <input
-          type="name"
-          name="name"
-          placeholder="name"
-          onChange={handleInputChange}
-          onFocus={handleInputFocus}
-        />
-        <input
-          type="expiry"
-          name="expiry"
-          placeholder="expiry"
-          onChange={handleInputChange}
-          onFocus={handleInputFocus}
-        />
-        <input
-          type="cvc"
-          name="cvc"
-          placeholder="cvc"
-          onChange={handleInputChange}
-          onFocus={handleInputFocus}
-        />
+        <Input allowClear size="large" type="tel" name="number" placeholder="Card Number" prefix={<FieldNumberOutlined />} onChange={handleInputChange} onFocus={handleInputFocus} style={{ width: '20%' }}/>
+        <br />
+        <Input allowClear size="large" type="name" name="name" placeholder="Name" prefix={<UserOutlined />} onChange={handleInputChange} onFocus={handleInputFocus} style={{ width: '20%' }}/>
+        <br />
+        <Input allowClear size="large" type="expiry" name="expiry" placeholder="Expirey" prefix={<CalendarOutlined />} onChange={handleInputChange} onFocus={handleInputFocus} style={{ width: '20%' }}/>
+        <br />
+        <Input allowClear size="large" type="cvc" name="cvc" placeholder="cvc" prefix={<QrcodeOutlined />} onChange={handleInputChange} onFocus={handleInputFocus} style={{ width: '20%' }}/>
       </form>
     </div>
   );

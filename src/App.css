@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+
+.rccs{
+  margin-top: 25px !important;
+}
+.ant-input-affix-wrapper{
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
