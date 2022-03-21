@@ -42,13 +42,13 @@ function PaymentForm() {
         number={numberState}
       />
       <form>
-        <Input allowClear size="large" type="tel" name="number" placeholder="Card Number" prefix={<FieldNumberOutlined />} onChange={handleInputChange} onFocus={handleInputFocus} style={{ width: '20%' }}/>
+        <Input allowClear size="large" type="text" name="number" placeholder="Card Number" prefix={<FieldNumberOutlined />} onChange={handleInputChange} onFocus={handleInputFocus} style={{ width: '20%' }}/>
         <br />
-        <Input allowClear size="large" type="name" name="name" placeholder="Name" prefix={<UserOutlined />} onChange={handleInputChange} onFocus={handleInputFocus} style={{ width: '20%' }}/>
+        <Input allowClear size="large" type="text" name="name" placeholder="Name" prefix={<UserOutlined />} onChange={handleInputChange} onFocus={handleInputFocus} style={{ width: '20%' }}/>
         <br />
-        <Input allowClear size="large" type="expiry" name="expiry" placeholder="Expirey" prefix={<CalendarOutlined />} onChange={handleInputChange} onFocus={handleInputFocus} style={{ width: '20%' }}/>
+        <Input allowClear size="large" type="text" name="expiry" placeholder="Expirey" prefix={<CalendarOutlined />} onChange={handleInputChange} onFocus={handleInputFocus} style={{ width: '20%' }}/>
         <br />
-        <Input allowClear size="large" type="cvc" name="cvc" placeholder="cvc" prefix={<QrcodeOutlined />} onChange={handleInputChange} onFocus={handleInputFocus} style={{ width: '20%' }}/>
+        <Input allowClear size="large" type="text" name="cvc" placeholder="cvc" prefix={<QrcodeOutlined />} onChange={handleInputChange} onFocus={handleInputFocus} style={{ width: '20%' }}/>
       </form>
     </div>
   );
