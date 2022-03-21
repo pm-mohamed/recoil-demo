@@ -1,13 +1,16 @@
-import logo from './logo.svg';
+import { RecoilRoot } from "recoil";
 import './App.css';
 import 'antd/dist/antd.css';
-import { DatePicker } from 'antd';
+import Counter  from './components/Counter';
+
 
 function App() {
   return (
-    <div className="App">
-      <DatePicker />
-    </div>
+    <RecoilRoot>
+      <div className="App">
+        <Counter/>
+      </div>
+    </RecoilRoot>
   );
 }
 
